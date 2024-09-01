@@ -9,7 +9,7 @@ services:
     volumes:
       - "$PWD/pgsql-data:/var/lib/postgresql/data"
     environment:
-      POSTGRES_PASSWORD: birulaut
+      POSTGRES_PASSWORD: postgres
     networks:
       site-5-net:
         ipv4_address: 172.20.0.21
@@ -21,8 +21,8 @@ services:
     volumes:
       - "$PWD/pgadmin:/var/lib/pgadmin"
     environment:
-      PGADMIN_DEFAULT_EMAIL: pitono@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: birulaut
+      PGADMIN_DEFAULT_EMAIL: pitono.eid@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: postgres
     networks:
       site-5-net:
         ipv4_address: 172.20.0.22
