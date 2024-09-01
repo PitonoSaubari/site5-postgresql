@@ -1,0 +1,37 @@
+services:
+  pgsql2:
+    container_name: pgsql2
+    image: postgres:16.4
+    restart: always
+    #ports:
+    #  - "5432:5432"
+    shm_size: 128mb
+    volumes:
+      - "$PWD/pgsql-data:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_PASSWORD: birulaut
+    networks:
+      site-5-net:
+        ipv4_address: 172.20.0.21
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:8.11
+    ports:
+      - "80:80"
+    volumes:
+      - "$PWD/pgadmin:/var/lib/pgadmin"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pitono@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: birulaut
+    networks:
+      site-5-net:
+        ipv4_address: 172.20.0.22
+
+
+networks:
+  site-5-net:
+    name: site-5-net
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
